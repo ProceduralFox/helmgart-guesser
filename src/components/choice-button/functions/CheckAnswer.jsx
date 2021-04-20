@@ -1,6 +1,6 @@
 import { firestore } from "../../../firebase/firebase.utils";
 
-let NewQuestion = null
+export let NewQuestion = null
 
 const GetData = async () => {
     firestore.collection('questions').doc('1').get().then(
@@ -15,12 +15,10 @@ const GetData = async () => {
     
 }
 
-// const test = firestore.collection('questions').doc('1').get().then(
-//     snapshot => questin = snapshot.data());
+GetData();
 
 
 const CheckAnswer = async (choice, answer) => {
-    GetData()
 
     if(choice === answer){
         console.log("Correct")

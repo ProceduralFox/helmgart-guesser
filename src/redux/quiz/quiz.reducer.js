@@ -18,6 +18,10 @@ const quizReducer = (state = INITIAL_STATE, action) => {
                 currentQuestion: action.payload
             }
 
+        case 'LOG_STATE':
+            console.log(state.currentQuestion)
+            return state;
+
         default:
             return state;
 
