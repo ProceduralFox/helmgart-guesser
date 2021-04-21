@@ -13,3 +13,8 @@ export const logState = () => ({
     type: 'LOG_STATE',
     payload: null,
 })
+
+export const redoState = () => ({
+    type: 'REDO_STATE',
+    payload: null
+})

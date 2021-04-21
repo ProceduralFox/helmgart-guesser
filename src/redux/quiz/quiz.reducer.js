@@ -7,7 +7,9 @@ const INITIAL_STATE = {
         second: "Screaming Bell",
         third: "Festering Ground",
         fourth: "Empire in Flames"
-    }
+    },
+    currentPosition: 0,
+    maxPosition: 3
 }
 
 const quizReducer = (state = INITIAL_STATE, action) => {
@@ -15,7 +17,14 @@ const quizReducer = (state = INITIAL_STATE, action) => {
         case 'SET_CURRENT_QUESTION':
             return {
                 ...state,
-                currentQuestion: action.payload
+                currentQuestion: action.payload,
+                currentPosition: state.currentPosition + 1
+            }
+
+        case 'REDO_STATE':
+            return {
+                ...state,
+                currentPosition: 0
             }
 
         case 'LOG_STATE':

@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 import ChoiceButton from '../../components/choice-button/choice-button.component';
 import CheckAnswer, { NewQuestion } from '../../components/choice-button/functions/CheckAnswer';
-import { logState, setQuestion } from '../../redux/quiz/quiz.actions';
+import { logState, redoState, setQuestion } from '../../redux/quiz/quiz.actions';
 
 
 
-const QuizPage = ({ currentQuestion, setQuestion, logState }) => {
+const QuizPage = ({ currentPosition, maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
 
     const { answer, first, fourth, image, second, third } = currentQuestion
     console.log(NewQuestion)
@@ -29,7 +29,15 @@ const QuizPage = ({ currentQuestion, setQuestion, logState }) => {
                     </Link>
 
                     <div>
-                    <ChoiceButton handleChange={() => setQuestion(NewQuestion)} value="change state"/>
+                    {
+                        currentPosition < maxPosition ?
+                        <ChoiceButton handleChange={() => setQuestion(NewQuestion[currentPosition])} value="change state"/>
+                        :
+                        <Link className='option 'to='/' onClick={() => redoState()}>
+                        Redo
+                        </Link>
+                    }
+                    
                     <ChoiceButton handleChange={logState} value="log state"/>
                     </div>
 
@@ -42,12 +50,15 @@ const QuizPage = ({ currentQuestion, setQuestion, logState }) => {
 }
 
 const mapStateToProps = state => ({
-    currentQuestion: state.quiz.currentQuestion
+    currentQuestion: state.quiz.currentQuestion,
+    currentPosition: state.quiz.currentPosition,
+    maxPosition: state.quiz.maxPosition
 })
 
 const mapDispatchToProps = dispatch => ({
     setQuestion: NewQuestion => dispatch(setQuestion(NewQuestion)),
-    logState: () => dispatch(logState())
+    logState: () => dispatch(logState()),
+    redoState: () => dispatch(redoState())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizPage);
