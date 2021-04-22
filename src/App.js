@@ -7,6 +7,9 @@ import QuizPage from './pages/quiz-page/quiz-page.component';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 
+import ResultsPage from './pages/results/results-page.component';
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +24,7 @@ class App extends React.Component {
       <Switch>
       <Route exact path='/' component={Homepage} />
       <Route path='/quiz' component={QuizPage} />
+      <Route path='/results' component={ResultsPage} />
       </Switch>
     </div>
   );

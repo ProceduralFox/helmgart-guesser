@@ -18,3 +18,8 @@ export const redoState = () => ({
     type: 'REDO_STATE',
     payload: null
 })
+
+export const correctAnswer = (answer) => ({
+    type: 'CORRECT_ANSWER',
+    payload: answer
+})

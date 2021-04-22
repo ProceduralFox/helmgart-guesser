@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 import ChoiceButton from '../../components/choice-button/choice-button.component';
 import CheckAnswer, { NewQuestion } from '../../components/choice-button/functions/CheckAnswer';
-import { logState, redoState, setQuestion } from '../../redux/quiz/quiz.actions';
+import { correctAnswer, logState, redoState, setQuestion } from '../../redux/quiz/quiz.actions';
 
 
-
-const QuizPage = ({ currentPosition, maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
+const QuizPage = ({ currentPosition, correctAnswer,  maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
 
     const { answer, first, fourth, image, second, third } = currentQuestion
     console.log(NewQuestion)
@@ -19,10 +18,10 @@ const QuizPage = ({ currentPosition, maxPosition, currentQuestion, setQuestion, 
                 <span>Picture goes here</span>
 
                 <div className="Options">
-                    <ChoiceButton handleChange={() => CheckAnswer(first, answer)} value={first}/>
-                    <ChoiceButton handleChange={() => CheckAnswer(second, answer)} value={second}/>
-                    <ChoiceButton handleChange={() => CheckAnswer(third, answer)} value={third}/>
-                    <ChoiceButton handleChange={() => CheckAnswer(fourth, answer)} value={fourth}/>
+                    <ChoiceButton handleChange={() => correctAnswer([first, answer])} value={first}/>
+                    <ChoiceButton handleChange={() => correctAnswer([second, answer])} value={second}/>
+                    <ChoiceButton handleChange={() => correctAnswer([third, answer])} value={third}/>
+                    <ChoiceButton handleChange={() => correctAnswer([fourth, answer])} value={fourth}/>
 
                     <Link className='option 'to='/'>
                         Take me back
@@ -33,7 +32,7 @@ const QuizPage = ({ currentPosition, maxPosition, currentQuestion, setQuestion, 
                         currentPosition < maxPosition ?
                         <ChoiceButton handleChange={() => setQuestion(NewQuestion[currentPosition])} value="change state"/>
                         :
-                        <Link className='option 'to='/' onClick={() => redoState()}>
+                        <Link className='option 'to='/results' onClick={() => redoState()}>
                         Redo
                         </Link>
                     }
@@ -58,7 +57,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     setQuestion: NewQuestion => dispatch(setQuestion(NewQuestion)),
     logState: () => dispatch(logState()),
-    redoState: () => dispatch(redoState())
+    redoState: () => dispatch(redoState()),
+    correctAnswer: (answer) => dispatch(correctAnswer(answer))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizPage);

@@ -1,5 +1,7 @@
 import { firestore } from "../../../firebase/firebase.utils";
+import { connect } from 'react-redux';
 import getRandomInt from "./getRandom";
+import { correctAnswer } from "../../../redux/quiz/quiz.actions";
 
 
 export let NewQuestion = []
@@ -40,7 +42,6 @@ const GetData = async () => {
 
 // console.log(number);
 
-
 GetData();
 
 
@@ -52,5 +53,7 @@ const CheckAnswer = async (choice, answer) => {
         console.log("Wrong")
     }
 }
+
+
 
 export default CheckAnswer;

@@ -1,3 +1,6 @@
+import { correctAnswer } from "./quiz.utils"
+
+
 
 const INITIAL_STATE = {
     currentQuestion: {
@@ -9,7 +12,8 @@ const INITIAL_STATE = {
         fourth: "Empire in Flames"
     },
     currentPosition: 0,
-    maxPosition: 3
+    maxPosition: 3,
+    correctQuestion: 0
 }
 
 const quizReducer = (state = INITIAL_STATE, action) => {
@@ -25,6 +29,12 @@ const quizReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentPosition: 0
+            }
+
+        case 'CORRECT_ANSWER':
+            return {
+                ...state,
+                correctQuestion: correctAnswer(action.payload, state.correctQuestion)
             }
 
         case 'LOG_STATE':
