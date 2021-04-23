@@ -13,7 +13,8 @@ const INITIAL_STATE = {
     },
     currentPosition: 0,
     maxPosition: 3,
-    correctQuestion: 0
+    correctQuestion: 0,
+    voted: false
 }
 
 const quizReducer = (state = INITIAL_STATE, action) => {
@@ -21,6 +22,7 @@ const quizReducer = (state = INITIAL_STATE, action) => {
         case 'SET_CURRENT_QUESTION':
             return {
                 ...state,
+                voted: false,
                 currentQuestion: action.payload,
                 currentPosition: state.currentPosition + 1
             }
@@ -34,6 +36,7 @@ const quizReducer = (state = INITIAL_STATE, action) => {
         case 'CORRECT_ANSWER':
             return {
                 ...state,
+                voted: true,
                 correctQuestion: correctAnswer(action.payload, state.correctQuestion)
             }
 

@@ -6,8 +6,9 @@ import ChoiceButton from '../../components/choice-button/choice-button.component
 import CheckAnswer, { NewQuestion } from '../../components/choice-button/functions/CheckAnswer';
 import { correctAnswer, logState, redoState, setQuestion } from '../../redux/quiz/quiz.actions';
 
+import './quiz-page.styles.css';
 
-const QuizPage = ({ currentPosition, correctAnswer,  maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
+const QuizPage = ({ currentPosition, correctAnswer, voted,  maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
 
     const { answer, first, fourth, image, second, third } = currentQuestion
     console.log(NewQuestion)
@@ -15,9 +16,15 @@ const QuizPage = ({ currentPosition, correctAnswer,  maxPosition, currentQuestio
         return (
 
             <div>
-                <span>Picture goes here</span>
+                <span className={`${currentPosition > 1 ? 'green' : ''}`} >Picture goes here
+                    <img src={currentQuestion.image} alt=""/>
+                </span>
 
-                <div className="Options">
+                {
+                voted ?
+                <div></div>
+                :
+                <div className={voted ? 'disable' : ''} className="Options">
                     <ChoiceButton handleChange={() => correctAnswer([first, answer])} value={first}/>
                     <ChoiceButton handleChange={() => correctAnswer([second, answer])} value={second}/>
                     <ChoiceButton handleChange={() => correctAnswer([third, answer])} value={third}/>
@@ -27,7 +34,11 @@ const QuizPage = ({ currentPosition, correctAnswer,  maxPosition, currentQuestio
                         Take me back
                     </Link>
 
-                    <div>
+                </div>
+                }
+
+                <div>
+                <div>
                     {
                         currentPosition < maxPosition ?
                         <ChoiceButton handleChange={() => setQuestion(NewQuestion[currentPosition])} value="change state"/>
@@ -39,8 +50,6 @@ const QuizPage = ({ currentPosition, correctAnswer,  maxPosition, currentQuestio
                     
                     <ChoiceButton handleChange={logState} value="log state"/>
                     </div>
-
-
                 </div>
 
             </div>
@@ -51,7 +60,8 @@ const QuizPage = ({ currentPosition, correctAnswer,  maxPosition, currentQuestio
 const mapStateToProps = state => ({
     currentQuestion: state.quiz.currentQuestion,
     currentPosition: state.quiz.currentPosition,
-    maxPosition: state.quiz.maxPosition
+    maxPosition: state.quiz.maxPosition,
+    voted: state.quiz.voted
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -1,11 +1,11 @@
 import React from 'react';
 
-// import './choice-button.styles.scss';
+import './choice-button.styles.css';
 
 
-const ChoiceButton = ({handleChange, value}) => (
+const ChoiceButton = ({handleChange, value, className}) => (
 
-    <button onClick={handleChange}>{value}</button>
+    <button className={className} onClick={handleChange}>{value}</button>
 
 );
 
