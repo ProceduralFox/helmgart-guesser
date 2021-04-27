@@ -23,37 +23,17 @@ const GetData = async () => {
 
         
     }
-
-
-
-    // firestore.collection('questions').doc('1').get().then(
-    //     snapshot => {
-    //     console.log(NewQuestion)
-    //     NewQuestion=snapshot.data()
-    //     console.log(NewQuestion)
-    //     })
-    //     .catch(
-    //         err => console.log(err)
-    //     );
-    
 }
 
 // let number = getRandomInt(2,7).toString();
 
 // console.log(number);
 
-GetData();
-
-
-const CheckAnswer = async (choice, answer) => {
-
-    if(choice === answer){
-        console.log("Correct")
-    } else {
-        console.log("Wrong")
-    }
+export const EraseData = () =>{ 
+    NewQuestion.length = 0
 }
 
 
+// GetData();
 
-export default CheckAnswer;
+export default GetData;

@@ -13,7 +13,7 @@ const ResultsPage = ({ correctQuestion }) => {
             <div><div>Umgak</div>
 
 
-            <Link className='option 'to='/' onClick={() => redoState()}>
+            <Link className='option 'to='/quiz' onClick={() => redoState()}>
                         Redo
                         </Link>
             </div>
@@ -25,7 +25,7 @@ const ResultsPage = ({ correctQuestion }) => {
             <div><div>Rat Catcher</div>
 
 
-            <Link className='option 'to='/' onClick={() => redoState()}>
+            <Link className='option 'to='/quiz' onClick={() => redoState()}>
                         Redo
                         </Link>
             </div>
@@ -35,7 +35,7 @@ const ResultsPage = ({ correctQuestion }) => {
             <div><div>Green Circles</div>
 
 
-            <Link className='option 'to='/' onClick={() => redoState()}>
+            <Link className='option 'to='/quiz' onClick={() => redoState()}>
                         Redo
                         </Link>
             </div>
@@ -45,7 +45,7 @@ const ResultsPage = ({ correctQuestion }) => {
             <div><div>Cousin Okri</div>
 
 
-            <Link className='option 'to='/' onClick={() => redoState()}>
+            <Link className='option 'to='/quiz' onClick={() => redoState()}>
                         Redo
                         </Link>
             </div>
