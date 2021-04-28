@@ -8,7 +8,7 @@ import { correctAnswer, logState, redoState, setQuestion } from '../../redux/qui
 
 import './quiz-page.styles.css';
 
-const QuizPage = ({ currentPosition, correctAnswer, voted,  maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
+const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
 
     const { answer, first, fourth, image, second, third } = currentQuestion
     console.log(NewQuestion)
@@ -22,7 +22,14 @@ const QuizPage = ({ currentPosition, correctAnswer, voted,  maxPosition, current
 
                 {
                 voted ?
-                <div></div>
+                <div>
+                    {
+                        correct ?
+                        <div>Correct {`the answer is ${answer}`}</div>
+                        :
+                        <div>Incorrect {`the answer is ${answer}`}</div>
+                    }
+                </div>
                 :
                 <div className={voted ? 'disable' : ''} className="Options">
                     <ChoiceButton handleChange={() => correctAnswer([first, answer])} value={first}/>
@@ -61,7 +68,8 @@ const mapStateToProps = state => ({
     currentQuestion: state.quiz.currentQuestion,
     currentPosition: state.quiz.currentPosition,
     maxPosition: state.quiz.maxPosition,
-    voted: state.quiz.voted
+    voted: state.quiz.voted,
+    correct: state.quiz.correct
 })
 
 const mapDispatchToProps = dispatch => ({

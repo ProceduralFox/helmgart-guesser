@@ -9,3 +9,12 @@ export const correctAnswer = (answer, currentValue) => {
         return currentValue
     }
 }
+
+export const correctAnswer2 = (answer) => {
+    if (answer[0] === answer[1]){
+        return true
+    } else {
+        return false
+    }
+}
+

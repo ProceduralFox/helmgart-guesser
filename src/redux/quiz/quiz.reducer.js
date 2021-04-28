@@ -1,5 +1,4 @@
-import { correctAnswer } from "./quiz.utils"
-
+import { correctAnswer, correctAnswer2 } from "./quiz.utils"
 
 
 const INITIAL_STATE = {
@@ -14,7 +13,8 @@ const INITIAL_STATE = {
     currentPosition: 0,
     maxPosition: 3,
     correctQuestion: 0,
-    voted: false
+    voted: false,
+    correct: null
 }
 
 const quizReducer = (state = INITIAL_STATE, action) => {
@@ -30,14 +30,17 @@ const quizReducer = (state = INITIAL_STATE, action) => {
         case 'REDO_STATE':
             return {
                 ...state,
-                currentPosition: 0
+                currentPosition: 0,
+                correctQuestion: 0,
+                voted: false
             }
 
         case 'CORRECT_ANSWER':
             return {
                 ...state,
                 voted: true,
-                correctQuestion: correctAnswer(action.payload, state.correctQuestion)
+                correctQuestion: correctAnswer(action.payload, state.correctQuestion),
+                correct: correctAnswer2(action.payload)
             }
 
         case 'LOG_STATE':

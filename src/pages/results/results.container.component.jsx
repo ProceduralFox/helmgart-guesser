@@ -8,8 +8,8 @@ class ResultsContainer extends React.Component {
 
     componentWillMount() {
         
-        EraseData()
-        GetData()
+        // EraseData()
+        // GetData()
     }
 
     render() {
