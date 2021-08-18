@@ -5,7 +5,7 @@ import './choice-button.styles.css';
 
 const ChoiceButton = ({handleChange, value, className}) => (
 
-    <button className={className} onClick={handleChange}>{value}</button>
+    <button className="btn" onClick={handleChange}>{value}</button>
 
 );
 

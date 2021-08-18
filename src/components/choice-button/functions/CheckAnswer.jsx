@@ -10,7 +10,7 @@ let length = 3
 const GetData = async () => {
     
     for (let index = 0; index < length; index++) {
-        let number = getRandomInt(1,6).toString();
+        let number = getRandomInt(1,11).toString();
 
         firestore.collection('questions').doc(number).get().then(
             snapshot => {

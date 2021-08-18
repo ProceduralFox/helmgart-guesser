@@ -15,49 +15,53 @@ const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition
 
         return (
 
-            <div>
-                <span className={`${currentPosition > 1 ? 'green' : ''}`} >Picture goes here
-                    <img src={currentQuestion.image} alt=""/>
-                </span>
+            <div className='page'>
+                <div className="shade">
+                    
+                </div>
+                <div className='image' >
+                    <img className='clue' 
+                    src={currentQuestion.image} alt=""/>
+                </div>
 
                 {
                 voted ?
-                <div>
+                <div className="Options">
                     {
                         correct ?
-                        <div>Correct {`the answer is ${answer}`}</div>
+                        <div className="answer correct btn link ">Correct, {`the answer is ${answer}`}</div>
                         :
-                        <div>Incorrect {`the answer is ${answer}`}</div>
+                        <div className="answer incorrect btn link">Incorrect, {`the answer is ${answer}`}</div>
                     }
+
+                    
                 </div>
+                
                 :
-                <div className={voted ? 'disable' : ''} className="Options">
-                    <ChoiceButton handleChange={() => correctAnswer([first, answer])} value={first}/>
+                <div className='fixedxContainer' className="Options">
+                    <ChoiceButton className="test" handleChange={() => correctAnswer([first, answer])} value={first}/>
                     <ChoiceButton handleChange={() => correctAnswer([second, answer])} value={second}/>
                     <ChoiceButton handleChange={() => correctAnswer([third, answer])} value={third}/>
                     <ChoiceButton handleChange={() => correctAnswer([fourth, answer])} value={fourth}/>
-
-                    <Link className='option 'to='/'>
-                        Take me back
-                    </Link>
-
                 </div>
                 }
 
-                <div>
-                <div>
+
+
+                {voted ? 
+                <div className="utility">
                     {
                         currentPosition < maxPosition ?
-                        <ChoiceButton handleChange={() => setQuestion(NewQuestion[currentPosition])} value="change state"/>
+                        <ChoiceButton handleChange={() => setQuestion(NewQuestion[currentPosition])} value="Next Question"/>
                         :
-                        <Link className='option 'to='/results' onClick={() => redoState()}>
-                        Redo
+                        <Link className='option btn link'to='/results'>
+                        Results
                         </Link>
                     }
-                    
-                    <ChoiceButton handleChange={logState} value="log state"/>
                     </div>
-                </div>
+                    :
+                <div></div>    
+                }
 
             </div>
 
