@@ -8,17 +8,16 @@ import { correctAnswer, logState, redoState, setQuestion } from '../../redux/qui
 
 import './quiz-page.styles.css';
 
-const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition, currentQuestion, setQuestion, logState, redoState }) => {
+const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition, currentQuestion, setQuestion, logState, redoState, questionsList }) => {
 
     const { answer, first, fourth, image, second, third } = currentQuestion
-    console.log(NewQuestion)
 
         return (
 
             <div className='page'>
-                <div className="shade">
-                    
-                </div>
+
+                <div className="shade"></div>
+
                 <div className='image' >
                     <img className='clue' 
                     src={currentQuestion.image} alt=""/>
@@ -33,13 +32,10 @@ const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition
                         :
                         <div className="answer incorrect btn link">Incorrect, {`the answer is ${answer}`}</div>
                     }
-
-                    
                 </div>
-                
                 :
                 <div className='fixedxContainer' className="Options">
-                    <ChoiceButton className="test" handleChange={() => correctAnswer([first, answer])} value={first}/>
+                    <ChoiceButton handleChange={() => correctAnswer([first, answer])} value={first}/>
                     <ChoiceButton handleChange={() => correctAnswer([second, answer])} value={second}/>
                     <ChoiceButton handleChange={() => correctAnswer([third, answer])} value={third}/>
                     <ChoiceButton handleChange={() => correctAnswer([fourth, answer])} value={fourth}/>
@@ -48,11 +44,12 @@ const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition
 
 
 
-                {voted ? 
+                {
+                voted ? 
                 <div className="utility">
                     {
                         currentPosition < maxPosition ?
-                        <ChoiceButton handleChange={() => setQuestion(NewQuestion[currentPosition])} value="Next Question"/>
+                        <ChoiceButton handleChange={() => setQuestion(questionsList[currentPosition])} value="Next Question"/>
                         :
                         <Link className='option btn link'to='/results'>
                         Results
@@ -73,7 +70,8 @@ const mapStateToProps = state => ({
     currentPosition: state.quiz.currentPosition,
     maxPosition: state.quiz.maxPosition,
     voted: state.quiz.voted,
-    correct: state.quiz.correct
+    correct: state.quiz.correct,
+    questionsList: state.quiz.questionsList
 })
 
 const mapDispatchToProps = dispatch => ({

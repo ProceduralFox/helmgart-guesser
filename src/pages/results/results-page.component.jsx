@@ -6,8 +6,6 @@ import { logState, redoState, setQuestion } from '../../redux/quiz/quiz.actions'
 
 import './results-page.styles.css'
 
-const test = "Seveng"
-
 const ResultsPage = ({ correctQuestion, redoState }) => {
 
     if(correctQuestion<1){

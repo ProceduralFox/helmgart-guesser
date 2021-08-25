@@ -5,6 +5,16 @@
   font-weight: 400;
 }
 
+@font-face {
+  font-family: "FrizQuadrata";
+  src: local("FrizQuadrata"),
+  url("/src/assets/fonts/friz-quadrata-std-bold-587034a220f9f.ttf") format("truetype");
+  font-weight: 6 
+  
+  
+   00;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'CaslonAntique', 'Segoe UI', 'Roboto', 'Oxygen',

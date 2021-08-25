@@ -9,7 +9,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import ResultsPage from './pages/results/results-page.component';
 import QuizContainer from './pages/quiz-container/quiz-container.component';
-import HomeContainer from './components/homepage/homepage.container.component';
 import ResultsContainer from './pages/results/results.container.component';
 
 
@@ -26,7 +25,7 @@ class App extends React.Component {
     return (
     <div>
       <Switch>
-      <Route exact path='/' component={HomeContainer} />
+      <Route exact path='/' component={Homepage} />
       <Route path='/quiz' component={QuizContainer} />
       <Route path='/results' component={ResultsPage} />
       </Switch>

@@ -1,7 +1,6 @@
 
 
 export const setQuestion = NewQuestion => {
-    console.log("test")
     return(
     {
     type: 'SET_CURRENT_QUESTION',
@@ -17,6 +16,21 @@ export const logState = () => ({
 export const redoState = () => ({
     type: 'REDO_STATE',
     payload: null
+})
+
+export const getQuestions = (list) => ({
+    type: 'GET_DATA',
+    payload: list
+})
+
+export const setRun = (position) => ({
+    type: 'SET_CURRENT_RUN',
+    payload: position
+})
+
+export const setRolled = (list) => ({
+    type: 'SET_ALREADY_ROLLED',
+    payload: list
 })
 
 export const correctAnswer = (answer) => ({

@@ -14,7 +14,10 @@ const INITIAL_STATE = {
     maxPosition: 3,
     correctQuestion: 0,
     voted: false,
-    correct: null
+    correct: null,
+    alreadyRolled: [],
+    questionsList: [],
+    currentRun: 1,
 }
 
 const quizReducer = (state = INITIAL_STATE, action) => {
@@ -46,6 +49,24 @@ const quizReducer = (state = INITIAL_STATE, action) => {
         case 'LOG_STATE':
             console.log(state.currentQuestion)
             return state;
+
+        case 'GET_DATA':
+            return {
+                ...state,
+                questionsList: action.payload
+            }
+
+        case 'SET_CURRENT_RUN':
+            return {
+                ...state,
+                currentRun: action.payload
+            }
+
+        case 'SET_ALREADY_ROLLED':
+            return {
+                ...state,
+                alreadyRolled: action.payload
+            }
 
         default:
             return state;
