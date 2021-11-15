@@ -22,3 +22,11 @@
 
     box-shadow: 1px -30px 50px -45px rgba(97, 10, 10, 0.774) inset;
 }
+
+
+@media only screen and (max-width: 100px) {
+    .btn {
+      font-size: 0.5rem;
+      padding: 5px;
+    }
+}

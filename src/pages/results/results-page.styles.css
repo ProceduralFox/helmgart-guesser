@@ -42,3 +42,32 @@
 .z {
     z-index: 30;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .blurb{
+        font-size: 1.4rem;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+
+    .blurb{
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+
+    .blurb{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+
+    .blurb{
+        font-size: 0.8rem;
+    }
+}
