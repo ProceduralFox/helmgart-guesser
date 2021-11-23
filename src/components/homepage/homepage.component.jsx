@@ -13,41 +13,68 @@ const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, c
 
     const GetData = async () => {
         const length = 3
-        const questionsList = []
-        
-        const previouslyRolled = alreadyRolled
+        const questionsListTemp = []
+
+        let iteration = localStorage.getItem("iteration");
+        let previouslyRolled = localStorage.getItem("previouslyRolled")
+
+        if(!iteration){
+            iteration = 1
+        } else {
+            iteration = JSON.parse(iteration) + 1
+        }
+
+        if(!previouslyRolled){
+            previouslyRolled = {}
+        } else {
+            previouslyRolled = JSON.parse(previouslyRolled)
+        }
+
 
         for (let index = 0; index < length; index++) {
-            let number = getRandomInt(1,11).toString();
-    
-            while(previouslyRolled.includes(number)){
-                number = getRandomInt(1,11).toString();
+
+            let valid = false
+            let number = 0
+
+            while(!valid){
+                const temp = getRandomInt(1, 11).toString();
+                
+                if(!previouslyRolled[temp]){
+                    previouslyRolled[temp] = iteration;
+                    number = temp;
+                    valid = true;
+                } else {
+                    const difference = iteration - previouslyRolled[temp]
+
+                    if(difference > 2){
+                        previouslyRolled[temp] = iteration;
+                        number = temp;
+                        valid = true;
+                    }
+                }
             }
+
+
     
             await firestore.collection('questions').doc(number).get().then(
                 snapshot => {
-                questionsList.push(snapshot.data())
+                questionsListTemp.push(snapshot.data())
                 console.log(questionsList)
                 })
                 .catch(
                     err => console.log(err)
                 );
-    
-            previouslyRolled.push(number)
             
         }
 
-        if(currentRun > 2){
-            setRun(1)
-            setRolled([])
-        } else {
-            setRun(currentRun+1)
-            setRolled(previouslyRolled)
-        }
+        iteration = JSON.stringify(iteration)
+        previouslyRolled = JSON.stringify(previouslyRolled)
 
-        console.log(previouslyRolled)
+        localStorage.setItem("iteration", iteration)
+        localStorage.setItem("previouslyRolled", previouslyRolled)
+
     
-        return questionsList
+        return questionsListTemp
     
     }
     
@@ -55,6 +82,8 @@ const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, c
 
         const questions = await GetData()
         getQuestions(questions)
+
+        console.log("we went back to home page")
     }, [])
 
 

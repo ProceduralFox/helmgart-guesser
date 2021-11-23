@@ -8,7 +8,6 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 
 import ResultsPage from './pages/results/results-page.component';
-import QuizContainer from './pages/quiz-container/quiz-container.component';
 import ResultsContainer from './pages/results/results.container.component';
 
 
@@ -26,7 +25,7 @@ class App extends React.Component {
     <div>
       <Switch>
       <Route exact path='/' component={Homepage} />
-      <Route path='/quiz' component={QuizContainer} />
+      <Route path='/quiz' component={QuizPage} />
       <Route path='/results' component={ResultsPage} />
       </Switch>
     </div>

@@ -63,7 +63,7 @@ const ResultsPage = ({ correctQuestion, redoState }) => {
 
 
             <Link className='option btn link' to='/' onClick={() => redoState()}>
-                        Start Again
+                        Try Again
                         </Link>
             </div>
         )
