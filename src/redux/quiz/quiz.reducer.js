@@ -1,15 +1,16 @@
 import { correctAnswer, correctAnswer2 } from "./quiz.utils"
 
+// {
+//     answer: "Screaming Bell",
+//     image: "The Bell",
+//     first: "Convocation of Decay",
+//     second: "Screaming Bell",
+//     third: "Festering Ground",
+//     fourth: "Empire in Flames"
+// }
 
 const INITIAL_STATE = {
-    currentQuestion: {
-        answer: "Screaming Bell",
-        image: "The Bell",
-        first: "Convocation of Decay",
-        second: "Screaming Bell",
-        third: "Festering Ground",
-        fourth: "Empire in Flames"
-    },
+    currentQuestion: null,
     currentPosition: 0,
     maxPosition: 3,
     correctQuestion: 0,

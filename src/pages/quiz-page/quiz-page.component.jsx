@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import ChoiceButton from '../../components/choice-button/choice-button.component';
 import CheckAnswer, { NewQuestion } from '../../components/choice-button/functions/CheckAnswer';
@@ -8,20 +8,32 @@ import { correctAnswer, logState, redoState, setQuestion } from '../../redux/qui
 
 import './quiz-page.styles.css';
 
+
+
 const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition, currentQuestion, setQuestion, logState, redoState, questionsList }) => {
+    const history = useHistory()
+
+    if(!currentQuestion){
+        history.push("/")
+        console.log("redirected to homepage")
+        return null
+    }
 
     const { answer, first, fourth, image, second, third } = currentQuestion
+
+
 
         return (
 
             <div className='page'>
 
-                <div className="shade"></div>
-
-                <div className='image' >
-                    <img className='clue' 
-                    src={currentQuestion.image} alt=""/>
+                <div className="shade">
+                    <div className='image' >
+                        <img className='clue' 
+                        src={currentQuestion.image} alt=""/>
+                    </div>
                 </div>
+
 
                 {
                 voted ?
