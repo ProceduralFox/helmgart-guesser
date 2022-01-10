@@ -59,7 +59,6 @@ const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, c
             await firestore.collection('questions').doc(number).get().then(
                 snapshot => {
                 questionsListTemp.push(snapshot.data())
-                console.log(questionsList)
                 })
                 .catch(
                     err => console.log(err)
@@ -83,14 +82,13 @@ const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, c
         const questions = await GetData()
         getQuestions(questions)
 
-        console.log("we went back to home page")
     }, [])
 
 
 
     return (
-        <div className="page">
-            <div className="shade"></div>
+        <div className="pageText">
+            <div className="shadeText"></div>
             <div className="blurb">HELMGART GUESSER</div>
             <p className="text">
                 " Lohner tells me you've been running errands for him all over Helmgart like a frantic Halfling looking for spices in a Stirlander's kitchen. <br></br>

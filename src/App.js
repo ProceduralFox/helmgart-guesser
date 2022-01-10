@@ -22,13 +22,13 @@ class App extends React.Component {
 
   render() {
     return (
-    <div>
+    <main class="App">
       <Switch>
       <Route exact path='/' component={Homepage} />
       <Route path='/quiz' component={QuizPage} />
       <Route path='/results' component={ResultsPage} />
       </Switch>
-    </div>
+    </main>
   );
   }
 }

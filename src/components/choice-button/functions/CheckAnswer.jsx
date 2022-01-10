@@ -22,7 +22,6 @@ const GetData = async () => {
         await firestore.collection('questions').doc(number).get().then(
             snapshot => {
             questionsList.push(snapshot.data())
-            console.log(questionsList)
             })
             .catch(
                 err => console.log(err)

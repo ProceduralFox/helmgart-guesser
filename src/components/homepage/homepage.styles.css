@@ -45,3 +45,47 @@
     z-index: 30;
 }
 
+.pageText {
+
+    background-image: url(/src/assets/patrik-rosander-halescourge-vista.jpg);
+    background-repeat: no-repeat;
+
+    background-size: cover;
+
+    height: 100vh;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-rows: repeat(2, 1fr) 350px repeat(3, 1fr);
+
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.shadeText {
+    background-color: rgba(0, 0, 0, 0.6);
+
+    padding: -10rem;
+
+    z-index: 1;
+
+    grid-row: 2 / 5;
+    grid-column: 2 / span 2;
+
+    width: 50vw;
+
+    align-self: stretch;
+    justify-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}

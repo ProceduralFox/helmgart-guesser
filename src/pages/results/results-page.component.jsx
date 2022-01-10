@@ -10,8 +10,8 @@ const ResultsPage = ({ correctQuestion, redoState }) => {
 
     if(correctQuestion<1){
         return (
-            <div className="page">
-                <div className="shade"></div>
+            <div className="pageText">
+                <div className="shadeText"></div>
                 <div className="title">{correctQuestion} / 10 </div>
                 <div className="blurb"> Umgak</div>
                 <p className="text"> " Disappointing ... "</p>
@@ -26,8 +26,8 @@ const ResultsPage = ({ correctQuestion, redoState }) => {
         )
     } else if (correctQuestion<2) {
         return (
-            <div className="page">
-                <div className="shade"></div>
+            <div className="pageText">
+                <div className="shadeText"></div>
                 <div className="title">{correctQuestion} / 10 </div>
                 <div className="blurb"> Rat Catcher</div>
                 <p className="text"> " About what I expected, Lohner's the real hero, managing with you lot. "</p>
@@ -40,8 +40,8 @@ const ResultsPage = ({ correctQuestion, redoState }) => {
         )
     } else if (correctQuestion < 3) {
         return (
-            <div className="page">
-                <div className="shade"></div>
+            <div className="pageText">
+                <div className="shadeText"></div>
                 <div className="title">{correctQuestion} / 10 </div>
                 <div className="blurb"> Green Circles</div>
                 <p className="text">" Well done! Elves wanna be you, Krubers wanna be with you, now just work on that friendly fire and you'll be golden. " </p>
@@ -54,8 +54,8 @@ const ResultsPage = ({ correctQuestion, redoState }) => {
         )
     } else {
         return (
-            <div className="page">
-                <div className="shade"></div>
+            <div className="pageText">
+                <div className="shadeText"></div>
                 <div className="title">{correctQuestion} / 10 </div>
                 <div className="blurb"> Cousin Okri</div>
 
