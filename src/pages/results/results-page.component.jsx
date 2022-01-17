@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -6,72 +7,34 @@ import { logState, redoState, setQuestion } from '../../redux/quiz/quiz.actions'
 
 import './results-page.styles.css'
 
+
 const ResultsPage = ({ correctQuestion, redoState }) => {
 
-    if(correctQuestion<1){
-        return (
-            <div className="pageText">
-                <div className="shadeText"></div>
-                <div className="title">{correctQuestion} / 10 </div>
-                <div className="blurb"> Umgak</div>
-                <p className="text"> " Disappointing ... "</p>
+    const [results, setResults] = useState({
+        0:["Umgak",`" Disappointing ... "`],
+        1:["Rat Catcher", ` " About what I expected, Lohner's the real hero, managing with you lot. " `],
+        2:["Green Circles", ` "Well done! Elves wanna be you, and Krubers wanna be with you. " `],
+        3:["Cousin Okri", ` " Now THAT is how we do it, Dawri! " `]
+    })
 
-
-            <Link className='option btn link'to='/' onClick={() => redoState()}>
-                        Try Again
-            </Link>
+    return (
+    <main className="page__new">
+        <section className="container">
+            <div className="shade__new">
+                <h2 className="shade__top">{results[Math.floor(correctQuestion/3)][0]}</h2>
+                <p className="shade__middle">
+                    {results[Math.floor(correctQuestion/3)][1]}
+                </p>
+                <h3 className="shade__bottom">{`${correctQuestion} / 10`}</h3>
             </div>
-
-        
-        )
-    } else if (correctQuestion<2) {
-        return (
-            <div className="pageText">
-                <div className="shadeText"></div>
-                <div className="title">{correctQuestion} / 10 </div>
-                <div className="blurb"> Rat Catcher</div>
-                <p className="text"> " About what I expected, Lohner's the real hero, managing with you lot. "</p>
-
-
-            <Link className='option btn link'to='/' onClick={() => redoState()}>
-                        Try Again
-                        </Link>
+            <div className="buttons_new">
+                <Link className='begin' to='/' onClick={() => redoState()}>
+                    Try Again
+                </Link>
             </div>
-        )
-    } else if (correctQuestion < 3) {
-        return (
-            <div className="pageText">
-                <div className="shadeText"></div>
-                <div className="title">{correctQuestion} / 10 </div>
-                <div className="blurb"> Green Circles</div>
-                <p className="text">" Well done! Elves wanna be you, Krubers wanna be with you, now just work on that friendly fire and you'll be golden. " </p>
-
-
-            <Link className='option btn link'to='/' onClick={() => redoState()}>
-                        Try Again
-                        </Link>
-            </div>
-        )
-    } else {
-        return (
-            <div className="pageText">
-                <div className="shadeText"></div>
-                <div className="title">{correctQuestion} / 10 </div>
-                <div className="blurb"> Cousin Okri</div>
-
-                <p className="text"> " Now THAT is how we do it, Dawri! "</p>
-
-
-            <Link className='option btn link' to='/' onClick={() => redoState()}>
-                        Try Again
-                        </Link>
-            </div>
-        )
-    }
-
-    
-
-
+        </section>
+    </main>
+    )
 }
 
 const mapStateToProps= state => ({

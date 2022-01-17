@@ -9,10 +9,11 @@ import getRandomInt from '../choice-button/functions/getRandom';
 import { firestore } from '../../firebase/firebase.utils';
 
 
+
 const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, currentRun, setRun, setRolled, alreadyRolled }) => {
 
     const GetData = async () => {
-        const length = 3
+        const length = 10
         const questionsListTemp = []
 
         let iteration = localStorage.getItem("iteration");
@@ -37,7 +38,7 @@ const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, c
             let number = 0
 
             while(!valid){
-                const temp = getRandomInt(1, 11).toString();
+                const temp = getRandomInt(1, 60).toString();
                 
                 if(!previouslyRolled[temp]){
                     previouslyRolled[temp] = iteration;
@@ -85,19 +86,46 @@ const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, c
     }, [])
 
 
+    if(true){
+        return (
+            <main className="page__new">
+                <section className="container">
+                    <div className="shade__new">
+                        <h2 className="shade__top">Helmgart Guesser</h2>
+                        <p className="shade__middle">
+                            " Lohner tells me you've been running errands for him all over Helmgart like a frantic Halfling looking for spices in a Stirlander's kitchen. <br></br>
+                                <br></br>
+                            Now what with our guests defiling every last inch of the town this probably means you can tell the difference between a Stormvermin and a Clan-Rat, but how much attention have you been paying to the lay of the land? <br></br>
+                                <br></br>
+                            I'll show you a couple landmarks and you tell me which part of this lovely little town each one is from. If you do well enough I might even have a chat with Lohner about not sending you to that Shallyian hospice anymore. "
+                        </p>
+                        <h3 className="shade__bottom">Are you ready to start?</h3>
+                    </div>
+                    <div className="buttons_new">
+                        <Link className='begin' to='/quiz' onClick={() => setQuestion(questionsList[currentPosition])}>
+                            Begin
+                        </Link>
+                    </div>
+                </section>
+            </main>
+        )
+    }
+
+
 
     return (
         <div className="pageText">
-            <div className="shadeText"></div>
-            <div className="blurb">HELMGART GUESSER</div>
-            <p className="text">
-                " Lohner tells me you've been running errands for him all over Helmgart like a frantic Halfling looking for spices in a Stirlander's kitchen. <br></br>
-                <br></br>
-                Now what with our guests defiling every last inch of the town this probably means you can tell the difference between a Stormvermin and a Clan-Rat, but how much attention have you been paying to the lay of the land? <br></br>
-                <br></br>
-                I'll show you a couple landmarks and you tell me which part of this lovely little town each one is from. If you do well enough I might even have a chat with Lohner about not sending you to that Shallyian hospice anymore. "
-            </p>
-            <p className="Intro">Are you ready to start?</p>
+            <div className="shadeText">
+                <div className="blurb">HELMGART GUESSER</div>
+                <p className="text">
+                    " Lohner tells me you've been running errands for him all over Helmgart like a frantic Halfling looking for spices in a Stirlander's kitchen. <br></br>
+                    <br></br>
+                    Now what with our guests defiling every last inch of the town this probably means you can tell the difference between a Stormvermin and a Clan-Rat, but how much attention have you been paying to the lay of the land? <br></br>
+                    <br></br>
+                    I'll show you a couple landmarks and you tell me which part of this lovely little town each one is from. If you do well enough I might even have a chat with Lohner about not sending you to that Shallyian hospice anymore. "
+                </p>
+                <p className="Intro">Are you ready to start?</p>
+            </div>
             <Link className='btn link'to='/quiz' onClick={() => setQuestion(questionsList[currentPosition])}>
                 Begin
             </Link>

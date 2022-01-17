@@ -35,6 +35,53 @@ const QuizPage = ({ currentPosition, correct, correctAnswer, voted,  maxPosition
 
     const { answer, first, fourth, image, second, third } = currentQuestion
 
+    if(true){
+        return (
+            <main className="page__new">
+                <section className="container">
+                    <div className="shade__new">
+                        <div className='image__new' >
+                            <img className='clue__new' src={currentQuestion.image} alt=""/>
+                        </div>
+                    </div>
+                    {
+                    voted ?
+                    <div className="options__new">
+                        {
+                            correct ?
+                            <div className="answer__new correct">Correct, {`the answer is ${answer}`}</div>
+                            :
+                            <div className="answer__new incorrect">Incorrect, {`the answer is ${answer}`}</div>
+                        }
+                    </div>
+                    :
+                    <div className="options__new">
+                        <ChoiceButton handleChange={() => correctAnswer([first, answer])} value={first}/>
+                        <ChoiceButton handleChange={() => correctAnswer([second, answer])} value={second}/>
+                        <ChoiceButton handleChange={() => correctAnswer([third, answer])} value={third}/>
+                        <ChoiceButton handleChange={() => correctAnswer([fourth, answer])} value={fourth}/>
+                    </div>
+                    }
+                    {
+                    voted ? 
+                    <div className="utility__new">
+                        {
+                            currentPosition < maxPosition ?
+                            <ChoiceButton handleChange={() => setQuestion(questionsList[currentPosition])} value="Next Question"/>
+                            :
+                            <Link className='begin'to='/results'>
+                            Results
+                            </Link>
+                        }
+                    </div>
+                    :
+                    null
+                    }
+
+                </section>
+            </main>
+        )
+    }
         if(screen < 800)
         {
         return (

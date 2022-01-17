@@ -12,7 +12,7 @@ import { correctAnswer, correctAnswer2 } from "./quiz.utils"
 const INITIAL_STATE = {
     currentQuestion: null,
     currentPosition: 0,
-    maxPosition: 3,
+    maxPosition: 10,
     correctQuestion: 0,
     voted: false,
     correct: null,

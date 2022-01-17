@@ -115,7 +115,7 @@
     align-content: center;
     align-items: center;
 
-    overflow: hidden;
+    overflow: auto;
 }
 
 
@@ -165,6 +165,7 @@
     .image{
 
         width: 80%;
+        margin-top: 4vh;
     }
 
     .Options{
@@ -175,8 +176,8 @@
     }
 
     .Options >.answer{
-        font-size: 3vmin;
-        height: 6vmin;
+        font-size: 11px;
+        height: 15px;
     }
 
     .utility{
