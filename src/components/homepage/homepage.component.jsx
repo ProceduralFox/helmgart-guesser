@@ -80,8 +80,13 @@ const Homepage = ({ setQuestion, currentPosition, getQuestions, questionsList, c
     
     useEffect(async ()=>{
 
-        const questions = await GetData()
-        getQuestions(questions)
+        try {
+            const questions = await GetData()
+            getQuestions(questions)
+        } catch (error) {
+            console.log(error)
+            window.alert("I ran out of free bandwidth for the day so the app will no longer work properly for today. Sorry about that!")
+        }
 
     }, [])
 
